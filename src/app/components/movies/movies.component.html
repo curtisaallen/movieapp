@@ -1,0 +1,72 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Find A Movies</h1>
+    <p>Search for a movie using the form below</p>
+    <form (ngSubmit)="searchMovies()" novalidate>
+      <input type="text" class="form-control" [(ngModel)]="searchStr" name="searchStr">
+      <br />
+      <button class="btn btn-primary btn-lg">Find</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="searchRes">
+  <div class="row">
+    <div class="col-md-2" *ngFor="let movie of searchRes;let i = index">
+      <div *ngIf="i < 6">
+        <img *ngIf="movie.poster_path" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="thumbnail img-responsive">
+        <h2>{{movie.original_title}}</h2>
+        <p>
+          {{movie.release_date}}
+        </p>
+        <p><a href="/movie/{{movie.id}}" class="btn btn-default">View Details</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Popular Movies</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-2" *ngFor="let movie of popularList;let i = index">
+       <div *ngIf="i < 6">
+          <img *ngIf="movie.poster_path" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="thumbnail img-responsive">
+          <h2>{{movie.original_title}}</h2>
+          <p>
+          {{movie.release_date}}
+          </p>
+          <p><a href="/movie/{{movie.id}}" class="btn btn-default">View Details</a></p>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">In Theaters</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-2" *ngFor="let movie of theatersList;let i = index">
+        <div *ngIf="i < 6">
+          <img *ngIf="movie.poster_path" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="thumbnail img-responsive">
+          <h2>{{movie.original_title}}</h2>
+          <p>
+            {{movie.release_date}}
+          </p>
+          <p><a  href="" class="btn btn-default">View Details</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
